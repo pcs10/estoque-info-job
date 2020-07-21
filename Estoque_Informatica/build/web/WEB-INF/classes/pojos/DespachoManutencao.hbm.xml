@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06/07/2020 22:00:47 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.DespachoManutencao" table="despacho_manutencao" catalog="estoque_informatica" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="equipamento" class="pojos.Equipamento" fetch="select">
+            <column name="ID_EQUIPAMENTO" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ordemServico" class="pojos.OrdemServico" fetch="select">
+            <column name="ID_ORDEM_SERVICO" />
+        </many-to-one>
+        <property name="defeito" type="string">
+            <column name="DEFEITO" length="65535" not-null="true" />
+        </property>
+        <property name="dataSaida" type="date">
+            <column name="DATA_SAIDA" length="10" />
+        </property>
+        <property name="ultimaManutencao" type="string">
+            <column name="ULTIMA_MANUTENCAO" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

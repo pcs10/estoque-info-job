@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06/07/2020 22:00:47 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.OrdemServico" table="ordem_servico" catalog="estoque_informatica" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="equipamento" class="pojos.Equipamento" fetch="select">
+            <column name="ID_EQUIPAMENTO" not-null="true" />
+        </many-to-one>
+        <property name="ordemServico" type="string">
+            <column name="ORDEM_SERVICO" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="dataEntrada" type="date">
+            <column name="DATA_ENTRADA" length="10" not-null="true" />
+        </property>
+        <property name="dataDevolucao" type="date">
+            <column name="DATA_DEVOLUCAO" length="10" />
+        </property>
+        <property name="numNfEnvio" type="string">
+            <column name="NUM_NF_ENVIO" length="5" />
+        </property>
+        <property name="observacoes" type="string">
+            <column name="OBSERVACOES" length="65535" />
+        </property>
+        <property name="servicos" type="string">
+            <column name="SERVICOS" length="65535" />
+        </property>
+        <property name="valor" type="big_decimal">
+            <column name="VALOR" precision="15" />
+        </property>
+        <set name="despachoManutencaos" table="despacho_manutencao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ORDEM_SERVICO" />
+            </key>
+            <one-to-many class="pojos.DespachoManutencao" />
+        </set>
+        <set name="retornoManutencaos" table="retorno_manutencao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ORDEM_SERVICO" />
+            </key>
+            <one-to-many class="pojos.RetornoManutencao" />
+        </set>
+    </class>
+</hibernate-mapping>

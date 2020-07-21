@@ -1,0 +1,80 @@
+body.corpo {
+    font-family: Verdana, Arial;
+    font-size: 1.8em;
+    color: black;
+    font-weight: normal;
+    background-color: #FFFFFF;
+}
+
+div.corpoFormulario {
+    padding-top: 0px;
+    padding-right: 2px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    background-color: #F0FFFF;
+}
+
+input.campoFormularioLogin {
+    font-size: 110%;
+}
+
+ul.itemMenu{
+    font-size: 95%;
+}
+
+p.tituloFormulario {
+    background-color: #FCB52F;
+    font-weight: bold;  
+}
+
+p.avisoSucesso {
+    background-color: #5CACEE;
+    color: white;
+    font-weight: bold;  
+}
+
+p.avisoErro {
+    background-color: #CD0000;
+    color: white;
+    font-weight: bold;  
+}
+
+td#linhaIcones{
+    width: 30px;
+}
+
+div.login{
+    background-color: #2D4383;
+}
+
+div.login img{
+    width: 190px;
+    position: relative;
+    left: 85px;
+}
+
+/* input login */
+.iconInput { 
+    position: relative 
+}
+.iconInput input { 
+    padding-left: 28px
+}
+.iconInput i { 
+    position: absolute;
+    padding: 9px 10px 
+}
+
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
+
+.cor-botoes{
+   background-color: #2D4383;
+}
+
+
+ 
