@@ -4,15 +4,15 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import pojos.Equipamento;
+import pojos.OrdemServico;
 
-public class EquipamentoDAO {
+public class OrdemServicoDAO {
 
-    public static Equipamento retornarObjeto(Session sessao, int id) {
+    public static OrdemServico retornarObjeto(Session sessao, int id) {
         Query q = null;
-        List<Equipamento> lista = null;
+        List<OrdemServico> lista = null;
         try {
-            String HQL = "FROM Equipamento obj WHERE obj.id = " + id;
+            String HQL = "FROM OrdemServico obj WHERE obj.id = " + id;
             q = sessao.createQuery(HQL); 
             lista = q.list();
             sessao.flush();
@@ -22,12 +22,12 @@ public class EquipamentoDAO {
         return (lista.get(0));
     }
 
-    public static List<Equipamento> listar(Session sessao) {
+    public static List<OrdemServico> listar(Session sessao) {
         Query q = null;
-        List<Equipamento> lista = null;
+        List<OrdemServico> lista = null;
         try {
-            //String HQL = "FROM Equipamento obj ORDER BY obj.nome ASC"; 
-            String HQL = "FROM Equipamento obj ORDER BY obj.id ASC"; 
+            String HQL = "FROM OrdemServico obj ORDER BY obj.ordemServico"; 
+            //String HQL = "FROM OrdemServico obj ORDER BY obj.id ASC"; 
             q = sessao.createQuery(HQL);
             lista = q.list();
             sessao.flush();
@@ -37,12 +37,12 @@ public class EquipamentoDAO {
         return (lista);
     }
     
-    public static List<Equipamento> listar(Session sessao, String valor) {
+    public static List<OrdemServico> listar(Session sessao, String valor) {
         Query q = null;
-        List<Equipamento> lista = null;
+        List<OrdemServico> lista = null;
         try {
-            String HQL = "FROM Equipamento obj WHERE obj.descricao LIKE '%" + valor + "%' ORDER BY obj.descricao ASC";
-            //String HQL = "FROM Equipamento obj WHERE obj.serial LIKE '%" + valor + "%' ORDER BY obj.id ASC";
+            //String HQL = "FROM OrdemServico obj WHERE obj.nome LIKE '%" + valor + "%' ORDER BY obj.nome ASC";
+            String HQL = "FROM OrdemServico obj WHERE obj.ordemServico LIKE '%" + valor + "%' ORDER BY obj.id ASC";
             q = sessao.createQuery(HQL);
             lista = q.list();
             sessao.flush();
@@ -52,7 +52,7 @@ public class EquipamentoDAO {
         return (lista);
     }
 
-    public static boolean salvar(Session s, Equipamento obj) {
+    public static boolean salvar(Session s, OrdemServico obj) {
         boolean sucesso = true;
         try {
             s.saveOrUpdate(obj);
@@ -65,7 +65,7 @@ public class EquipamentoDAO {
         }
     }
 
-    public static boolean excluir(Session s, Equipamento obj) {
+    public static boolean excluir(Session s, OrdemServico obj) {
         boolean sucesso = true;
         try {
             s.delete(obj);
