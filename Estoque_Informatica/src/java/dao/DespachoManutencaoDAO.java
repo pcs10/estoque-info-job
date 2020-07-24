@@ -26,8 +26,8 @@ public class DespachoManutencaoDAO {
         Query q = null;
         List<DespachoManutencao> lista = null;
         try {
-            //String HQL = "FROM DespachoManutencao obj ORDER BY obj.nome ASC"; 
-            String HQL = "FROM DespachoManutencao obj ORDER BY obj.id ASC"; 
+            String HQL = "FROM DespachoManutencao obj ORDER BY obj.defeito ASC"; 
+            //String HQL = "FROM DespachoManutencao obj ORDER BY obj.id ASC"; 
             q = sessao.createQuery(HQL);
             lista = q.list();
             sessao.flush();

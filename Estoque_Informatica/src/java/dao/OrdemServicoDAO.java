@@ -26,8 +26,7 @@ public class OrdemServicoDAO {
         Query q = null;
         List<OrdemServico> lista = null;
         try {
-            String HQL = "FROM OrdemServico obj ORDER BY obj.ordemServico"; 
-            //String HQL = "FROM OrdemServico obj ORDER BY obj.id ASC"; 
+            String HQL = "FROM OrdemServico obj ORDER BY obj.ordemServico"; // primeiro tabela  (classe) e depois o campo (que ta minusculo            //String HQL = "FROM OrdemServico obj ORDER BY obj.id ASC"; 
             q = sessao.createQuery(HQL);
             lista = q.list();
             sessao.flush();

@@ -30,12 +30,17 @@
                     DespachoManutencao dm = DespachoManutencaoDAO.retornarObjeto(sessao, idDespachoManutencao);
                     defeitoManutencao = dm.getDefeito();
                     
-                    Date dataTemp = dm.getDataSaida();
+                    
+                    try{
+                        dataSaida = dm.getDataSaida().toString(); //converter campo data em string
+                    }catch(){
+                        //
+                    }
                     
                     
                     
-                  
-                  
+                   
+                    
                     ultimaManutencao = dm.getUltimaManutencao();
                     idEquipamento = dm.getEquipamento().getId();
                     idOrdemServico = dm.getOrdemServico().getId(); //pegar id da ordem de servico
@@ -134,7 +139,7 @@
 
                  if (retorno) {%>
                 <p class="text-center avisoSucesso">Manutenção salva com sucesso!</p>
-                <a href="../gui/cadastrar_despachomanutencao.jsp?acao=Iniciar&idManutencao=0">Nova manutenção</a>
+                <a href="../gui/cadastrar_despachomanutencao.jsp?acao=Iniciar&idDespachoManutencao=0">Nova manutenção</a>
                  <%} else {%>
                 <p class="text-center avisoErro">Manutenção não foi salva com sucesso!</p>
                 <%}

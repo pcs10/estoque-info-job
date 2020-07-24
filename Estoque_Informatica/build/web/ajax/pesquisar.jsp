@@ -105,6 +105,56 @@
                 </tbody>
             </table>
         <%}
+    }else if (objeto.equals("DespachoManutencao")) { 
+        List<DespachoManutencao> lista = DespachoManutencaoDAO.listar(sessao, valor); %>
+        
+        <div class="text-center form-group">
+            <input type="button" class="btn btn-primary cor-botoes" onclick="pesquisar(document.getElementById('defeitoDespachoManutencao').value, 'DespachoManutencao')" value="Pesquisar" id="acao" name="acao"/>
+            <input type="reset" class="btn btn-primary cor-botoes" value="Limpar" id="limpar" name="limpar" />
+            <%if (!lista.isEmpty()){ %>
+                <input type="submit" class="btn btn-primary cor-botoes" value="Imprimir" id="acao" name="acao"/>
+            <%}%>
+        </div>
+
+        <%if (lista.isEmpty()){ %>
+            <p class="text-center avisoErro">
+                Nenhum registro encontrado.
+            <p>        
+        <% } else { %>
+            <input type="hidden" id="tipo" name="tipo" value="DespachoManutencao" />
+            
+            <table class="table-striped table-bordered" width="100%">
+                <thead>
+                    <tr align="center">
+                        <td>Ord.</td>
+                        <td>Defeito</td>
+                        <td>Data Saida</td>
+                        <td>Ult. Manut.</td>
+                        <td>Equip.</td>
+                        <td>Ord. Serv.</td>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <% int i = 1; 
+                        for(DespachoManutencao dm : lista){ %>
+                        <tr class="resultadosTabelaPesquisar" align="center">
+                            <td><%out.print(i++);%></td>
+                            <td><%out.print(dm.getDefeito());%></td>
+                            <td><%out.print(dm.getDataSaida());%></td>
+                            <td><%out.print(dm.getUltimaManutencao());%></td>
+                            <td><%out.print(dm.getEquipamento().getSerial());%></td>
+                            <td><%out.print(dm.getOrdemServico().getOrdemServico());%></td>
+                            <td id="linhaIcones"><a class="btn-sm btn-danger glyphicon glyphicon-trash" onclick="return confirmarExcluir()"   
+                                   href="cadastrar_despachomanutencao.jsp?acao=Excluir&idDespachoManutencao=<%=dm.getId()%>"></a></td>
+                            <td id="linhaIcones"><a class="btn-sm btn-warning glyphicon glyphicon-edit " 
+                               href="cadastrar_despachomanutencao.jsp?acao=Editar&idDespachoManutencao=<%=dm.getId()%>"></a></td>
+                             <td id="linhaIcones"><a class="btn-sm btn-primary glyphicon glyphicon-print not-active" 
+                               href="cadastrar_despachomanutencao.jsp?acao=Editar&idDespachoManutencao=<%=dm.getId()%>"></a></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <%}
     }
     sessao.close();    
 %>

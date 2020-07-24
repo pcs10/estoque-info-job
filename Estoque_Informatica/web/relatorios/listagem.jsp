@@ -36,7 +36,7 @@
             }else if(tipo.equals("Equipamento")){
                 titulo = "Equipamentos";
             }else if(tipo.equals("Manutencao")){
-                titulo = "Manutenção";
+                titulo = "Despacho Manutenção";
             }else if(tipo.equals("RetornoManutencao")){
                 titulo = "Retorno da Manutenção";
             }else if(tipo.equals("RelatorioCompleto")){
@@ -93,83 +93,6 @@
                     <td align="center"><%out.print(i++);%></td>
                     <td><%out.print(e.getSerial());%></td>
                     <td><%out.print(e.getTipoEquipamento().getNome());%></td>
-                </tr>
-            <%}%> 
-            </tbody>
-        </table>
-       <%}else if (tipo.equals("Manutencao")) {
-                valor = request.getParameter("defeitoManutencao");
-                List<Manutencao> lista = ManutencaoDAO.listar(sessao, valor);
-        %>
-        <table border="1" width="100%">
-            <thead>
-                <tr class="tituloTabelaListagem" align="center">
-                    <td>Ord.</td>
-                    <td>Defeito</td>
-                    <td>Equipamento</td>
-                </tr>
-            </thead>
-            <tbody>
-                <%  int i = 1;
-                for (Manutencao m : lista) { %>
-                <tr class="resultadosListagem">
-                    <td align="center"><%out.print(i++);%></td>
-                    <td><%out.print(m.getDefeito());%></td>
-                    <td><%out.print(m.getEquipamento().getSerial());%></td>
-                </tr>
-            <%}%> 
-            </tbody>
-        </table>
-       <%}else if (tipo.equals("RetornoManutencao")) {
-                valor = request.getParameter("laudoRetornoManutencao");
-                List<RetornoManutencao> lista = RetornoManutencaoDAO.listar(sessao, valor);
-        %>
-        <table border="1" width="100%">
-            <thead>
-                <tr class="tituloTabelaListagem" align="center">
-                    <td>Ord.</td>           
-                    <td>Laudo Retorno</td>
-                    <td>Defeito</td>
-                </tr>
-            </thead>
-            <tbody>
-                <%  int i = 1;
-                for (RetornoManutencao rm : lista) { %>
-                <tr class="resultadosListagem">
-                    <td align="center"><%out.print(i++);%></td>
-                    <td><%out.print(rm.getLaudoRetorno());%></td>
-                    <td><%out.print(rm.getManutencao().getDefeito());%></td>
-                </tr>
-            <%}%> 
-            </tbody>
-        </table>
-       <%}else if (tipo.equals("RelatorioCompleto")) {
-                valor = request.getParameter("relatorioCompleto");
-                List<RetornoManutencao> lista = RetornoManutencaoDAO.listar(sessao, valor);
-        %>
-        <table border="1" width="100%">
-            <thead>
-                <tr class="tituloTabelaListagem" align="center">
-                    <td>Ord.</td>
-                        <td>Tp. Equip.</td>
-                        <td>Equip.</td>
-                        <td>Dt Saida</td>
-                        <td>Defeito</td>
-                        <td>Dt Retor.</td>
-                        <td>Laudo</td>
-                </tr>
-            </thead>
-            <tbody>
-                <%  int i = 1;
-                for (RetornoManutencao rm : lista) { %>
-                <tr class="resultadosListagem">
-                    <td align="center"><%out.print(i++);%></td>
-                    <td><%out.print(rm.getManutencao().getEquipamento().getTipoEquipamento().getNome());%></td>
-                    <td><%out.print(rm.getManutencao().getEquipamento().getSerial());%></td>
-                    <td><%out.print(rm.getManutencao().getDataSaida());%></td>
-                    <td><%out.print(rm.getManutencao().getDefeito());%></td>
-                    <td><%out.print(rm.getDataRetorno());%></td>
-                    <td><%out.print(rm.getLaudoRetorno());%></td>
                 </tr>
             <%}%> 
             </tbody>
