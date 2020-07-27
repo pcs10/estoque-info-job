@@ -30,16 +30,11 @@
                     DespachoManutencao dm = DespachoManutencaoDAO.retornarObjeto(sessao, idDespachoManutencao);
                     defeitoManutencao = dm.getDefeito();
                     
-                    
                     try{
                         dataSaida = dm.getDataSaida().toString(); //converter campo data em string
-                    }catch(){
-                        //
+                    }catch(Exception ex){
+                        out.print("Erro na data de saida");
                     }
-                    
-                    
-                    
-                   
                     
                     ultimaManutencao = dm.getUltimaManutencao();
                     idEquipamento = dm.getEquipamento().getId();
@@ -122,6 +117,7 @@
                     dm = DespachoManutencaoDAO.retornarObjeto(sessao, idDespachoManutencao);
                 }//else
 
+                //converto a data de String para Date nesse formato.
                 SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
                 Date dataFormatada = formato.parse(dataSaida);
 

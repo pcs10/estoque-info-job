@@ -35,7 +35,7 @@
                 titulo = "Tipos de Equipamentos"; // titulo da pagina do relatório
             }else if(tipo.equals("Equipamento")){
                 titulo = "Equipamentos";
-            }else if(tipo.equals("Manutencao")){
+            }else if(tipo.equals("DespachoManutencao")){
                 titulo = "Despacho Manutenção";
             }else if(tipo.equals("RetornoManutencao")){
                 titulo = "Retorno da Manutenção";
@@ -93,6 +93,35 @@
                     <td align="center"><%out.print(i++);%></td>
                     <td><%out.print(e.getSerial());%></td>
                     <td><%out.print(e.getTipoEquipamento().getNome());%></td>
+                </tr>
+            <%}%> 
+            </tbody>
+        </table>
+       <%}else if (tipo.equals("DespachoManutencao")) {
+                valor = request.getParameter("defeitoDespachoManutencao");
+                List<DespachoManutencao> lista = DespachoManutencaoDAO.listar(sessao, valor);
+        %>
+        <table border="1" width="100%">
+            <thead>
+                <tr class="tituloTabelaListagem" align="center">
+                    <td>Ord.</td>
+                    <td>Defeito</td>
+                    <td>Data Saida</td>
+                    <td>Ult. Manut.</td>
+                    <td>Equip.</td>
+                    <td>Ord. Serv.</td>
+                </tr>
+            </thead>
+            <tbody>
+                <%  int i = 1;
+                for (DespachoManutencao dm : lista) { %>
+                <tr class="resultadosListagem">
+                    <td align="center"><%out.print(i++);%></td>
+                    <td><%out.print(dm.getDefeito());%></td>
+                    <td><%out.print(dm.getDataSaida());%></td>
+                    <td><%out.print(dm.getUltimaManutencao());%></td>
+                    <td><%out.print(dm.getEquipamento().getSerial());%></td>
+                    <td><%out.print(dm.getOrdemServico().getOrdemServico());%></td>
                 </tr>
             <%}%> 
             </tbody>

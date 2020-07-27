@@ -8,7 +8,7 @@
 
     <form name="pesquisarManutencao" method="POST" action="../relatorios/listagem.jsp" target="_blank">
         <div class="form-group">
-            <label class="control-label">Manutenção</label>
+            <label class="control-label">Despacho Manutenção</label>
             <input type="text" class="form-control" id="defeitoDespachoManutencao" name="defeitoDespachoManutencao" value="" placeholder="Digite o defeito que deseja pesquisar." />
         </div>
 
