@@ -155,7 +155,55 @@
                 </tbody>
             </table>
         <%}
-    }
+    }else if (objeto.equals("RetornoManutencao")) { 
+        List<RetornoManutencao> lista = RetornoManutencaoDAO.listar(sessao, valor); %>
+        
+        <div class="text-center form-group">
+            <input type="button" class="btn btn-primary cor-botoes" onclick="pesquisar(document.getElementById('laudoRetornoManutencao').value, 'RetornoManutencao')" value="Pesquisar" id="acao" name="acao"/>
+            <input type="reset" class="btn btn-primary cor-botoes" value="Limpar" id="limpar" name="limpar" />
+            <%if (!lista.isEmpty()){ %>
+                <input type="submit" class="btn btn-primary cor-botoes" value="Imprimir" id="acao" name="acao"/>
+            <%}%>
+        </div>
+
+        <%if (lista.isEmpty()){ %>
+            <p class="text-center avisoErro">
+                Nenhum registro encontrado.
+            <p>        
+        <% } else { %>
+            <input type="hidden" id="tipo" name="tipo" value="RetornoManutencao" />
+            
+            <table class="table-striped table-bordered" width="100%">
+                <thead>
+                    <tr align="center">
+                        <td>Ord.</td>
+                        <td>Laudo Retorno</td>
+                        <td>Data Retorno</td>
+                        <td>Equip.</td>
+                        <td>Ord. Serv.</td>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <% int i = 1; 
+                        for(RetornoManutencao rm : lista){ %>
+                        <tr class="resultadosTabelaPesquisar" align="center">
+                            <td><%out.print(i++);%></td>
+                            <td><%out.print(rm.getLaudoRetorno());%></td>
+                            <td><%out.print(rm.getDataRetorno());%></td>
+                            <td><%out.print(rm.getEquipamento().getSerial());%></td>
+                            <td><%out.print(rm.getOrdemServico().getOrdemServico());%></td>
+                            <td id="linhaIcones"><a class="btn-sm btn-danger glyphicon glyphicon-trash" onclick="return confirmarExcluir()"   
+                                   href="cadastrar_retornomanutencao.jsp?acao=Excluir&idDespachoManutencao=<%=rm.getId()%>"></a></td>
+                            <td id="linhaIcones"><a class="btn-sm btn-warning glyphicon glyphicon-edit " 
+                               href="cadastrar_retornomanutencao.jsp?acao=Editar&idDespachoManutencao=<%=rm.getId()%>"></a></td>
+                             <td id="linhaIcones"><a class="btn-sm btn-primary glyphicon glyphicon-print not-active" 
+                               href="cadastrar_retornomanutencao.jsp?acao=Editar&idDespachoManutencao=<%=rm.getId()%>"></a></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <%}
+    } // fim else if
     sessao.close();    
 %>
         

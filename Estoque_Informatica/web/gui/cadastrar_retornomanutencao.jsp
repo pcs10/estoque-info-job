@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%
     HttpSession sessaoHTTP = request.getSession();
     if (!sessaoHTTP.getId().equals(sessaoHTTP.getAttribute("idSessao"))) {
@@ -20,17 +22,16 @@
             if (acao.equals("Iniciar") || acao.equals("Editar")) {
                 String laudoRetornoManutencao = "";
                 String dataRetornoManutencao = "";
-                int equipamentoId = -1;
-                int ordemServicoId = -1;
+                int idEquipamento = -1; // da chave estrangeira
+                int idOrdemServico = -1; // da chave estrangeira
                 
                // int manutencaoId = -1;
                 if (acao.equals("Editar")){
                     RetornoManutencao rm = RetornoManutencaoDAO.retornarObjeto(sessao, idRetornoManutencao);
                     laudoRetornoManutencao = rm.getLaudoRetorno();
                     dataRetornoManutencao = rm.getDataRetorno().toString();
-                    equipamentoId = rm.getEquipamento().getId();
-                    ordemServicoId = rm.getOrdemServico().getId();
-                   // manutencaoId = rm.getManutencao().getId();
+                    idEquipamento = rm.getEquipamento().getId();
+                    idOrdemServico = rm.getOrdemServico().getId();
                 }// if editar
         %>
         <form name="Salvar" action="cadastrar_retornomanutencao.jsp">
@@ -50,13 +51,27 @@
             </div>
             
             <div class="form-group"> 
-                <label class="control-label">Saida pra manutenção</label>
-                <select class="form-control" id="manutencaoId" name="manutencaoId" >
-                    <%for (Equipamento m : EquipamentoDAO.listar(sessao)) { 
-                        if (m.getId() == equipamentoId){ %>
-                            <option value="<%=m.getId()%>" selected><%="["+ m.getEquipamento().getTipoEquipamento().getNome() + " - " + m.getEquipamento().getSerial() + "] - " +  m.getDataSaida()%></option>    
+                <label class="control-label">Equipamento</label>
+                <select class="form-control" id="idEquipamento" name="idEquipamento" >
+                    <%for (Equipamento e : EquipamentoDAO.listar(sessao)) { 
+                        if (e.getId() == idEquipamento){ %>
+                            <option value="<%=e.getId()%>" selected><%="[" + e.getTipoEquipamento().getNome() + "] - " + e.getSerial()%></option>    
                       <%}else{ %>
-                            <option value="<%=m.getId()%>"><%="[" + m.getEquipamento().getTipoEquipamento().getNome() + " - " +  m.getEquipamento().getSerial() + "] - " +  m.getDataSaida()%></option>    
+                            <option value="<%=e.getId()%>"><%="[" +e.getTipoEquipamento().getNome() + "] - " + e.getSerial()%></option>    
+                      <%} //else
+                    }// for
+                 %>
+                </select>
+            </div>
+                
+            <div class="form-group"> 
+                <label class="control-label">Ordem de Serviço</label>
+                <select class="form-control" id="idOrdemServico" name="idOrdemServico" >
+                    <%for (OrdemServico os : OrdemServicoDAO.listar(sessao)) { 
+                        if (os.getId() == idOrdemServico){ %>
+                            <option value="<%=os.getId()%>" selected><%=os.getOrdemServico()%></option>    
+                      <%}else{ %>
+                            <option value="<%=os.getId()%>"><%=os.getOrdemServico()%></option>    
                       <%} //else
                     }// for
                  %>
@@ -73,12 +88,11 @@
 
                 String laudoRetorno = request.getParameter("laudoRetorno").toUpperCase();
                 String dataRetorno = request.getParameter("dataRetorno").toUpperCase();
-                int manutencaoId = Integer.parseInt(request.getParameter("manutencaoId"));
+                int equipamentoId = Integer.parseInt(request.getParameter("idEquipamento"));
+                int ordemServicoId = Integer.parseInt(request.getParameter("idOrdemServico"));
 
-                Manutencao m = ManutencaoDAO.retornarObjeto(sessao, manutencaoId);
-
-               // out.print("O valor de nome enviado foi: " + serial + "<br>"); 
-               // out.print("O valor de estadoId enviado foi: " + tipoEquipamentoId+ "<br>");
+                Equipamento e = EquipamentoDAO.retornarObjeto(sessao, equipamentoId);
+                OrdemServico os = OrdemServicoDAO.retornarObjeto(sessao, equipamentoId);
 
                 //Cria a instância do POJO
                 RetornoManutencao rm; 
@@ -89,10 +103,15 @@
                     rm = RetornoManutencaoDAO.retornarObjeto(sessao, idRetornoManutencao);
                 }//else
 
+                //converto a data de String para Date nesse formato.
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
+                Date dataFormatada = formato.parse(dataRetorno);
+
                 //Popula o novo POJO
                 rm.setLaudoRetorno(laudoRetorno);
-                rm.setDataRetorno(dataRetorno);                
-                rm.setManutencao(m);
+                rm.setDataRetorno(dataFormatada);                
+                rm.setEquipamento(e);
+                rm.setOrdemServico(os);
 
                 //Salva no BD
                 boolean retorno;

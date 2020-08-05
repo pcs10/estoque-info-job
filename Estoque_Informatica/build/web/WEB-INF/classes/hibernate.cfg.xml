@@ -42,7 +42,7 @@ Contributor(s):
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://192.168.0.155:3308/estoque_informatica</property>
+    <property name="hibernate.connection.url">jdbc:mysql://192.168.0.162:3308/estoque_informatica</property>
     <property name="hibernate.connection.username">developer</property>
     <property name="hibernate.connection.autocommit">true</property>
     <property name="hibernate.connection.password">123456ab*</property>
