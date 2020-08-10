@@ -12,8 +12,8 @@
 
 <p>Sobre</p>
 
-<p>Versão 1.4 <br>
-    13/06/2020 </p>
+<p>Versão Beta<br>
+    10/08/2020 </p>
 
 <jsp:include page="../includes/rodape.jsp"/>
 
