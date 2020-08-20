@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
 
         
-        <title>Sistema ELFSM</title>
+        <title>Estoque Info Job</title>
 
         <link rel="stylesheet" href="../includes/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="../includes/css/estilo.css">
@@ -33,7 +33,7 @@
                                 <td align="left"><img src="../imagens/logomarca.png" height="80"/></td>
                             </tr>
                             <tr>
-                                <td colspan="2" align="center">Sistema ELFSM</td>
+                                <td colspan="2" align="center">Estoque Info Job</td>
                             </tr>
                         </tbody>
                     </table>

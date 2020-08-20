@@ -143,7 +143,18 @@
                             <td><%out.print(dm.getDataSaida());%></td>
                             <td><%out.print(dm.getUltimaManutencao());%></td>
                             <td><%out.print(dm.getEquipamento().getSerial());%></td>
-                            <td><%out.print(dm.getOrdemServico().getOrdemServico());%></td>
+                            
+                            <% 
+                                String tempResult;
+                                if (dm.getOrdemServico().getOrdemServico().equals(null)) { 
+                                      tempResult = "-1";
+                                }else{
+                                      tempResult = dm.getOrdemServico().getOrdemServico();
+                                }//else
+                                
+
+                            %>
+                            <td><% out.print(tempResult); %></td>
                             <td id="linhaIcones"><a class="btn-sm btn-danger glyphicon glyphicon-trash" onclick="return confirmarExcluir()"   
                                    href="cadastrar_despachomanutencao.jsp?acao=Excluir&idDespachoManutencao=<%=dm.getId()%>"></a></td>
                             <td id="linhaIcones"><a class="btn-sm btn-warning glyphicon glyphicon-edit " 
