@@ -11,8 +11,8 @@
         <many-to-one name="equipamento" class="pojos.Equipamento" fetch="select">
             <column name="ID_EQUIPAMENTO" not-null="true" />
         </many-to-one>
-        <property name="ordemServico" type="string">
-            <column name="ORDEM_SERVICO" length="10" not-null="true" unique="true" />
+        <property name="numOrdemServico" type="string">
+            <column name="NUM_ORDEM_SERVICO" length="10" not-null="true" unique="true" />
         </property>
         <property name="dataEntrada" type="date">
             <column name="DATA_ENTRADA" length="10" not-null="true" />

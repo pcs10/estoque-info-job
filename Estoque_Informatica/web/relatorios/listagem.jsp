@@ -109,7 +109,7 @@
                     <td>Data Saida</td>
                     <td>Ult. Manut.</td>
                     <td>Equip.</td>
-                    <td>Ord. Serv.</td>
+                  <!--   <td>Ord. Serv.</td>  -->
                 </tr>
             </thead>
             <tbody>
@@ -121,7 +121,7 @@
                     <td><%out.print(dm.getDataSaida());%></td>
                     <td><%out.print(dm.getUltimaManutencao());%></td>
                     <td><%out.print(dm.getEquipamento().getSerial());%></td>
-                    <td><%out.print(dm.getOrdemServico().getOrdemServico());%></td>
+                    <!-- fazer aqui depois a ordem de servico -->
                 </tr>
             <%}%> 
             </tbody>

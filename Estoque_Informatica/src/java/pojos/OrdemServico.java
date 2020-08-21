@@ -15,7 +15,7 @@ public class OrdemServico  implements java.io.Serializable {
 
      private Integer id;
      private Equipamento equipamento;
-     private String ordemServico;
+     private String numOrdemServico;
      private Date dataEntrada;
      private Date dataDevolucao;
      private String numNfEnvio;
@@ -29,14 +29,14 @@ public class OrdemServico  implements java.io.Serializable {
     }
 
 	
-    public OrdemServico(Equipamento equipamento, String ordemServico, Date dataEntrada) {
+    public OrdemServico(Equipamento equipamento, String numOrdemServico, Date dataEntrada) {
         this.equipamento = equipamento;
-        this.ordemServico = ordemServico;
+        this.numOrdemServico = numOrdemServico;
         this.dataEntrada = dataEntrada;
     }
-    public OrdemServico(Equipamento equipamento, String ordemServico, Date dataEntrada, Date dataDevolucao, String numNfEnvio, String observacoes, String servicos, BigDecimal valor, Set despachoManutencaos, Set retornoManutencaos) {
+    public OrdemServico(Equipamento equipamento, String numOrdemServico, Date dataEntrada, Date dataDevolucao, String numNfEnvio, String observacoes, String servicos, BigDecimal valor, Set despachoManutencaos, Set retornoManutencaos) {
        this.equipamento = equipamento;
-       this.ordemServico = ordemServico;
+       this.numOrdemServico = numOrdemServico;
        this.dataEntrada = dataEntrada;
        this.dataDevolucao = dataDevolucao;
        this.numNfEnvio = numNfEnvio;
@@ -62,11 +62,11 @@ public class OrdemServico  implements java.io.Serializable {
         this.equipamento = equipamento;
     }
     public String getOrdemServico() {
-        return this.ordemServico;
+        return this.numOrdemServico;
     }
     
     public void setOrdemServico(String ordemServico) {
-        this.ordemServico = ordemServico;
+        this.numOrdemServico = ordemServico;
     }
     public Date getDataEntrada() {
         return this.dataEntrada;

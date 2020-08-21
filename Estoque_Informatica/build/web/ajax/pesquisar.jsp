@@ -131,7 +131,7 @@
                         <td>Data Saida</td>
                         <td>Ult. Manut.</td>
                         <td>Equip.</td>
-                        <td>Ord. Serv.</td>
+                      <!--  <td>Ord. Serv.</td> -->
                     </tr>
                 </thead>
                 <tbody> 
@@ -143,18 +143,7 @@
                             <td><%out.print(dm.getDataSaida());%></td>
                             <td><%out.print(dm.getUltimaManutencao());%></td>
                             <td><%out.print(dm.getEquipamento().getSerial());%></td>
-                            
-                            <% 
-                                String tempResult;
-                                if (dm.getOrdemServico().getOrdemServico().equals(null)) { 
-                                      tempResult = "-1";
-                                }else{
-                                      tempResult = dm.getOrdemServico().getOrdemServico();
-                                }//else
-                                
-
-                            %>
-                            <td><% out.print(tempResult); %></td>
+                          <!--  //finalizar esse campo depois:   td  out.print(dm.getOrdemServico().getOrdemServico()); -->
                             <td id="linhaIcones"><a class="btn-sm btn-danger glyphicon glyphicon-trash" onclick="return confirmarExcluir()"   
                                    href="cadastrar_despachomanutencao.jsp?acao=Excluir&idDespachoManutencao=<%=dm.getId()%>"></a></td>
                             <td id="linhaIcones"><a class="btn-sm btn-warning glyphicon glyphicon-edit " 
@@ -191,7 +180,7 @@
                         <td>Laudo Retorno</td>
                         <td>Data Retorno</td>
                         <td>Equip.</td>
-                        <td>Ord. Serv.</td>
+                       <!-- <td>Ord. Serv.</td> -->
                     </tr>
                 </thead>
                 <tbody> 
@@ -202,7 +191,7 @@
                             <td><%out.print(rm.getLaudoRetorno());%></td>
                             <td><%out.print(rm.getDataRetorno());%></td>
                             <td><%out.print(rm.getEquipamento().getSerial());%></td>
-                            <td><%out.print(rm.getOrdemServico().getOrdemServico());%></td>
+                            <!-- fazer depois aqui a ordem de servico -->
                             <td id="linhaIcones"><a class="btn-sm btn-danger glyphicon glyphicon-trash" onclick="return confirmarExcluir()"   
                                    href="cadastrar_retornomanutencao.jsp?acao=Excluir&idDespachoManutencao=<%=rm.getId()%>"></a></td>
                             <td id="linhaIcones"><a class="btn-sm btn-warning glyphicon glyphicon-edit " 

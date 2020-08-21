@@ -64,18 +64,10 @@
                 </select>
             </div>
                 
-            <div class="form-group"> 
+            <div class="form-group">
                 <label class="control-label">Ordem de Serviço</label>
-                <select class="form-control" id="idOrdemServico" name="idOrdemServico" >
-                    <%for (OrdemServico os : OrdemServicoDAO.listar(sessao)) { 
-                        if (os.getId() == idOrdemServico){ %>
-                            <option value="<%=os.getId()%>" selected><%=os.getOrdemServico()%></option>    
-                      <%}else{ %>
-                            <option value="<%=os.getId()%>"><%=os.getOrdemServico()%></option>    
-                      <%} //else
-                    }// for
-                 %>
-                </select>
+                <input maxlength="1000" type="text" class="form-control" id="idOrdemServico" name="idOrdemServico" value="<%=idOrdemServico%>" 
+                       placeholder="Digite a Ordem de Serviço" required/>
             </div>
                 
             <div class="text-center form-group">
@@ -89,10 +81,10 @@
                 String laudoRetorno = request.getParameter("laudoRetorno").toUpperCase();
                 String dataRetorno = request.getParameter("dataRetorno").toUpperCase();
                 int equipamentoId = Integer.parseInt(request.getParameter("idEquipamento"));
-                int ordemServicoId = Integer.parseInt(request.getParameter("idOrdemServico"));
+              //  int ordemServicoId = Integer.parseInt(request.getParameter("idOrdemServico"));
 
                 Equipamento e = EquipamentoDAO.retornarObjeto(sessao, equipamentoId);
-                OrdemServico os = OrdemServicoDAO.retornarObjeto(sessao, equipamentoId);
+                //OrdemServico os = OrdemServicoDAO.retornarObjeto(sessao, equipamentoId);
 
                 //Cria a instância do POJO
                 RetornoManutencao rm; 
@@ -111,7 +103,7 @@
                 rm.setLaudoRetorno(laudoRetorno);
                 rm.setDataRetorno(dataFormatada);                
                 rm.setEquipamento(e);
-                rm.setOrdemServico(os);
+               // rm.setOrdemServico(os);
 
                 //Salva no BD
                 boolean retorno;

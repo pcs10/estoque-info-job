@@ -27,7 +27,7 @@ public class OrdemServicoDAO {
         List<OrdemServico> lista = null;
         try {
             //String HQL = "FROM OrdemServico obj ORDER BY obj.id ASC";
-            String HQL = "FROM OrdemServico obj ORDER BY obj.ordemServico"; // primeiro tabela  (classe) e depois o campo (que ta minusculo             
+            String HQL = "FROM OrdemServico obj ORDER BY obj.numOrdemServico"; // primeiro tabela  (classe) e depois o campo (que ta minusculo             
             q = sessao.createQuery(HQL);
             lista = q.list();
             sessao.flush();
@@ -42,7 +42,7 @@ public class OrdemServicoDAO {
         List<OrdemServico> lista = null;
         try {
             //String HQL = "FROM OrdemServico obj WHERE obj.nome LIKE '%" + valor + "%' ORDER BY obj.nome ASC";
-            String HQL = "FROM OrdemServico obj WHERE obj.ordemServico LIKE '%" + valor + "%' ORDER BY obj.id ASC";
+            String HQL = "FROM OrdemServico obj WHERE obj.numOrdemServico LIKE '%" + valor + "%' ORDER BY obj.id ASC";
             q = sessao.createQuery(HQL);
             lista = q.list();
             sessao.flush();
