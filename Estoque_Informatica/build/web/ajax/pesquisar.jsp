@@ -203,7 +203,58 @@
                 </tbody>
             </table>
         <%}
-    } // fim else if
+    } else if (objeto.equals("OrdemServico")) { 
+        List<OrdemServico> lista = OrdemServicoDAO.listar(sessao, valor); %>
+        
+        <div class="text-center form-group">
+            <input type="button" class="btn btn-primary cor-botoes" onclick="pesquisar(document.getElementById('numOrdemServico').value, 'OrdemServico')" value="Pesquisar" id="acao" name="acao"/>
+            <input type="reset" class="btn btn-primary cor-botoes" value="Limpar" id="limpar" name="limpar" />
+            <%if (!lista.isEmpty()){ %>
+                <input type="submit" class="btn btn-primary cor-botoes" value="Imprimir" id="acao" name="acao"/>
+            <%}%>
+        </div>
+
+        <%if (lista.isEmpty()){ %>
+            <p class="text-center avisoErro">
+                Nenhum registro encontrado.
+            <p>        
+        <% } else { %>
+            <input type="hidden" id="tipo" name="tipo" value="RetornoManutencao" />
+            
+            <table class="table-striped table-bordered" width="100%">
+                <thead>
+                    <tr align="center">
+                        <td>Ord.</td>
+                        <td>Num OS</td>
+                        <td>Data entrada</td>
+                        <td>Data Devolução</td>
+                        <td>Equipamento</td>
+                        <td>Valor</td>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <% int i = 1; 
+                        for(OrdemServico os : lista){ %>
+                        <tr class="resultadosTabelaPesquisar" align="center">
+                            <td><%out.print(i++);%></td>
+                            <td><%out.print(os.getNumOrdemServico());%></td>
+                            <td><%out.print(os.getDataEntrada());%></td>
+                            <td><%out.print(os.getDataDevolucao());%></td>
+                            <td><%out.print(os.getEquipamento().getSerial());%></td>
+                            <td><%out.print(os.getValor());%></td>
+                            <!-- fazer depois aqui a ordem de servico -->
+                            <td id="linhaIcones"><a class="btn-sm btn-danger glyphicon glyphicon-trash" onclick="return confirmarExcluir()"   
+                                   href="cadastrar_ordemservico.jsp?acao=Excluir&idOrdemServico=<%=os.getId()%>"></a></td>
+                            <td id="linhaIcones"><a class="btn-sm btn-warning glyphicon glyphicon-edit " 
+                               href="cadastrar_ordemservico.jsp?acao=Editar&idOrdemServico=<%=os.getId()%>"></a></td>
+                             <td id="linhaIcones"><a class="btn-sm btn-primary glyphicon glyphicon-print not-active" 
+                               href="cadastrar_ordemservico.jsp?acao=Editar&idOrdemServico=<%=os.getId()%>"></a></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <%}
+    }
     sessao.close();    
 %>
         
