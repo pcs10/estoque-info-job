@@ -39,8 +39,8 @@
                 titulo = "Despacho Manutenção";
             }else if(tipo.equals("RetornoManutencao")){
                 titulo = "Retorno da Manutenção";
-            }else if(tipo.equals("RelatorioCompleto")){
-                titulo = "Relatório Completo";
+            }else if(tipo.equals("OrdemServico")){
+                titulo = "Ordem Serviço";
             }
         %>
         <table border="0" width="100%">
@@ -121,6 +121,33 @@
                     <td><%out.print(dm.getDataSaida());%></td>
                     <td><%out.print(dm.getUltimaManutencao());%></td>
                     <td><%out.print(dm.getEquipamento().getSerial());%></td>
+                    <!-- fazer aqui depois a ordem de servico -->
+                </tr>
+            <%}%> 
+            </tbody>
+        </table>
+       <%}else if (tipo.equals("RetornoManutencao")) {
+                valor = request.getParameter("laudoRetornoManutencao");
+                List<RetornoManutencao> lista = RetornoManutencaoDAO.listar(sessao, valor);
+        %>
+        <table border="1" width="100%">
+            <thead>
+                <tr class="tituloTabelaListagem" align="center">
+                    <td>Ord.</td>
+                    <td>Laudo Retorno</td>
+                    <td>Data Retorno</td>
+                    <td>Equip.</td>
+                  <!--   <td>Ord. Serv.</td>  -->
+                </tr>
+            </thead>
+            <tbody>
+                <%  int i = 1;
+                for (RetornoManutencao rm : lista) { %>
+                <tr class="resultadosListagem">
+                    <td align="center"><%out.print(i++);%></td>
+                    <td><%out.print(rm.getLaudoRetorno());%></td>
+                    <td><%out.print(rm.getDataRetorno());%></td>
+                    <td><%out.print(rm.getEquipamento().getSerial());%></td>
                     <!-- fazer aqui depois a ordem de servico -->
                 </tr>
             <%}%> 
