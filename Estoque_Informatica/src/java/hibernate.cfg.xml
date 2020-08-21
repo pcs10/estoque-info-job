@@ -46,10 +46,10 @@ Contributor(s):
     <property name="hibernate.connection.username">developer</property>
     <property name="hibernate.connection.autocommit">true</property>
     <property name="hibernate.connection.password">123456ab*</property>
-    <mapping resource="pojos/Equipamento.hbm.xml"/>
-    <mapping resource="pojos/DespachoManutencao.hbm.xml"/>
     <mapping resource="pojos/TipoEquipamento.hbm.xml"/>
+    <mapping resource="pojos/Equipamento.hbm.xml"/>
     <mapping resource="pojos/OrdemServico.hbm.xml"/>
+    <mapping resource="pojos/DespachoManutencao.hbm.xml"/>
     <mapping resource="pojos/RetornoManutencao.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

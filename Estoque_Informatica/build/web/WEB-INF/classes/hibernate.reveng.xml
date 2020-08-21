@@ -41,9 +41,9 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="estoque_informatica"/>
-  <table-filter match-name="retorno_manutencao"/>
+  <table-filter match-name="equipamento"/>
   <table-filter match-name="ordem_servico"/>
   <table-filter match-name="tipo_equipamento"/>
-  <table-filter match-name="equipamento"/>
   <table-filter match-name="despacho_manutencao"/>
+  <table-filter match-name="retorno_manutencao"/>
 </hibernate-reverse-engineering>

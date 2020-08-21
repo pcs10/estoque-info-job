@@ -1,5 +1,5 @@
 package pojos;
-// Generated 06/07/2020 22:00:45 by Hibernate Tools 4.3.1
+// Generated 21/08/2020 10:14:54 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -61,12 +61,12 @@ public class OrdemServico  implements java.io.Serializable {
     public void setEquipamento(Equipamento equipamento) {
         this.equipamento = equipamento;
     }
-    public String getOrdemServico() {
+    public String getNumOrdemServico() {
         return this.numOrdemServico;
     }
     
-    public void setOrdemServico(String ordemServico) {
-        this.numOrdemServico = ordemServico;
+    public void setNumOrdemServico(String numOrdemServico) {
+        this.numOrdemServico = numOrdemServico;
     }
     public Date getDataEntrada() {
         return this.dataEntrada;
