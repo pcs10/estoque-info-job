@@ -153,6 +153,34 @@
             <%}%> 
             </tbody>
         </table>
+       <%}else if (tipo.equals("OrdemServico")) {
+                valor = request.getParameter("numOrdemServico");
+                List<OrdemServico> lista = OrdemServicoDAO.listar(sessao, valor);
+        %>
+        <table border="1" width="100%">
+            <thead>
+                <tr class="tituloTabelaListagem" align="center">
+                    <td>Ord.</td>
+                    <td>Num OS</td>
+                    <td>Dt. Entrada</td>
+                    <td>Dt. Devolucao</td>
+                    <td>Equip.</td>
+                  <!--   <td>Ord. Serv.</td>  -->
+                </tr>
+            </thead>
+            <tbody>
+                <%  int i = 1;
+                for (RetornoManutencao rm : lista) { %>
+                <tr class="resultadosListagem">
+                    <td align="center"><%out.print(i++);%></td>
+                    <td><%out.print(rm.getLaudoRetorno());%></td>
+                    <td><%out.print(rm.getDataRetorno());%></td>
+                    <td><%out.print(rm.getEquipamento().getSerial());%></td>
+                    <!-- fazer aqui depois a ordem de servico -->
+                </tr>
+            <%}%> 
+            </tbody>
+        </table>
        <%}%>
     </div>
 </html>
