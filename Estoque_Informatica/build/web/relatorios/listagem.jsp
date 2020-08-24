@@ -170,12 +170,14 @@
             </thead>
             <tbody>
                 <%  int i = 1;
-                for (RetornoManutencao rm : lista) { %>
+                for (OrdemServico os : lista) { %>
                 <tr class="resultadosListagem">
                     <td align="center"><%out.print(i++);%></td>
-                    <td><%out.print(rm.getLaudoRetorno());%></td>
-                    <td><%out.print(rm.getDataRetorno());%></td>
-                    <td><%out.print(rm.getEquipamento().getSerial());%></td>
+                    <td><%out.print(os.getNumOrdemServico());%></td>
+                    <td><%out.print(os.getDataEntrada());%></td>
+                    <td><%out.print(os.getDataDevolucao());%></td>
+                    <td><%out.print(os.getEquipamento().getSerial());%></td>
+                    <td><%out.print(os.getValor());%></td>
                     <!-- fazer aqui depois a ordem de servico -->
                 </tr>
             <%}%> 

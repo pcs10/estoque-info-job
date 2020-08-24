@@ -38,13 +38,13 @@
                     try{
                         dataEntrada = os.getDataEntrada().toString(); //converter campo data em string
                     }catch(Exception ex){
-                        out.print("Erro na data de entrada");
+                        out.print("Erro na data de entrada" + ex);
                     } //catch
                     
                     try{
                         dataDevolucao = os.getDataDevolucao().toString(); //converter campo data em string
                     }catch(Exception ex){
-                        out.print("Erro na data de devolução");
+                        out.print("Erro na data de devolução: " + ex);
                     } //catch
                     
                     idEquipamento = os.getEquipamento().getId();

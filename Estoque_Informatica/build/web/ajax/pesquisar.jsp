@@ -38,7 +38,7 @@
                         <td>Tipo de Equipamento</td>
                     </tr>
                 </thead>
-                <tbody > 
+                <tbody> 
                     <% int i = 1; 
                         for(TipoEquipamento te : lista){ %>
                         <tr class="resultadosTabelaPesquisar" align="center">

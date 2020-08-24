@@ -26,6 +26,8 @@
                 String ultimaManutencao = "";
                 int idEquipamento = -1; // da chave estrangeira
                 int idOrdemServico = -1; // da chave estrangeira
+                int idTipoEquipamento = -1;
+                
                 if (acao.equals("Editar")){
                     DespachoManutencao dm = DespachoManutencaoDAO.retornarObjeto(sessao, idDespachoManutencao);
                     defeitoManutencao = dm.getDefeito();
@@ -43,7 +45,7 @@
         %>
         <form name="Salvar" action="cadastrar_despachomanutencao.jsp">
             <input type="hidden" name="idDespachoManutencao" value="<%=idDespachoManutencao%>" />
-            <p class="text-center tituloFormulario">CADASTRO DE MANUTENÇÕES</p>
+            <p class="text-center tituloFormulario">CADASTRO DE DESPACHO DE MANUTENÇÕES</p>
             
             <div class="form-group">
                 <label class="control-label">Defeito</label>
@@ -62,6 +64,7 @@
                 <input maxlength="20" type="text" class="form-control" id="ultimaManutencao" name="ultimaManutencao" value="<%=ultimaManutencao%>" 
                        placeholder="Última manutenção." required/>
             </div>
+                       
             
             <div class="form-group"> 
                 <label class="control-label">Equipamento</label>
